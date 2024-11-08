@@ -1,9 +1,11 @@
 import React, { memo, FC, useEffect, useState } from 'react';
 import { productListData } from '../../../data/product.data';
+import { IProductModel } from '../product.model';
+import { SDescription, SImage, SList, SPrice, STitle, SWrap } from '../../../style/style';
 
 
 const ProductCard: FC = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<IProductModel[]>();
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
 
@@ -20,7 +22,6 @@ const ProductCard: FC = () => {
     }
     fetchData()
   }, [])
-  console.log(data);
 
   if (loading) {
     return (
@@ -40,22 +41,23 @@ const ProductCard: FC = () => {
     <ul>
       {data.map((product => {
         return (
-          <li key={product.id}>
-            <img src={product.image} alt={product.title} />
-            <p>
+          <SList key={product.id}>
+            <STitle>
               {product.title}
-            </p>
-            <p>
-              {product.description}
-            </p>
-            <p>
-              {product.price} $
-            </p>
-          </li>
+            </STitle>
+            <SWrap>
+              <SImage src={product.image} alt={product.title} />
+              <SDescription>
+                {product.description}
+              </SDescription>
+              <SPrice>
+                {product.price}$
+              </SPrice>
+            </SWrap>
+          </SList>
         )
       }))}
     </ul>
   )
 };
 export default memo(ProductCard);
-
