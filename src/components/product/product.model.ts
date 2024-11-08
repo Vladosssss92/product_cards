@@ -1,6 +1,12 @@
-
-export const ProductModel = async () => {
-  const response = await fetch('https://fakestoreapi.com/products')
-  const json = await response.json()
-  return json
+export interface IProductModel {
+  category: string,
+  title: string,
+  description: string,
+  id: number,
+  image: string,
+  price: number,
+  rating: {
+    count: number,
+    rate: number
+  },
 }
