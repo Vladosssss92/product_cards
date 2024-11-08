@@ -2,7 +2,7 @@ import styled, {createGlobalStyle} from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   * {
-    margin: 0;
+    margin: 6px;
     padding: 0;
   }
   ul, li {
@@ -11,11 +11,11 @@ export const GlobalStyle = createGlobalStyle`
 `
 export const SWrap = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 10px;
   justify-content: space-between;
 `
 
-export const STitle = styled.h2`
+export const STitle = styled.h3`
   text-align: center;
   margin-top: 5px;
   margin-bottom: 15px;
@@ -32,9 +32,8 @@ export const SList = styled.li`
 `
 
 export const SImage = styled.img`
-  max-width: 200px;
-  max-height: 200px;
-  margin: 5px;
+  width: 25%;
+  height: 25%;
 `
 
 export const SPrice = styled.p`
