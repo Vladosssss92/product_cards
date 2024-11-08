@@ -1,7 +1,7 @@
 import React, { memo, FC, useEffect, useState } from 'react';
 import { productListData } from '../../../data/product.data';
 import { IProductModel } from '../product.model';
-import { SDescription, SImage, SList, SPrice, STitle, SWrap } from '../../../style/style';
+import { SDescription, SImage, SList, SPrice, STitle, SUl, SWrap } from '../../../style/style';
 
 
 const ProductCard: FC = () => {
@@ -38,7 +38,7 @@ const ProductCard: FC = () => {
     )
   }
   return (
-    <ul>
+    <SUl>
       {data.map((product => {
         return (
           <SList key={product.id}>
@@ -57,7 +57,7 @@ const ProductCard: FC = () => {
           </SList>
         )
       }))}
-    </ul>
+    </SUl>
   )
 };
 export default memo(ProductCard);

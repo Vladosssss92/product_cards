@@ -2,7 +2,7 @@ import styled, {createGlobalStyle} from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   * {
-    margin: 6px;
+    margin: 0;
     padding: 0;
   }
   ul, li {
@@ -20,14 +20,15 @@ export const STitle = styled.h3`
   margin-top: 5px;
   margin-bottom: 15px;
 `
-
+export const SUl = styled.ul`
+  margin: 8px;
+`
 export const SList = styled.li`
   border: 2px solid lightgray;
   border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 5px;
-  margin: 10px;
+  padding: 5px;
   max-width: 900px;
+  min-width: 400px;
   margin: 10px auto;
 `
 
