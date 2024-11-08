@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
 `
 export const SWrap = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 20px;
   justify-content: space-between;
 `
 
@@ -44,5 +44,7 @@ export const SPrice = styled.p`
 `
 
 export const SDescription = styled.p`
-  max-width: 450px;
+  /* max-width: 200px; */
+  min-width: 200px;
+
 `
