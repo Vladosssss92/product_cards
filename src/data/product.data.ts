@@ -1,7 +1,7 @@
+import axios from "axios"
 import { IProductModel } from "../components/product/product.model"
 
-export const productListData = async (): Promise<IProductModel[]> => {
-  const response = await fetch('https://fakestoreapi.com/products')
-  const data = await response.json()
-  return data
+export const productListData = async (url: string): Promise<IProductModel[]> => {
+  const response = await axios.get(url)
+  return response.data
 }
