@@ -1,5 +1,3 @@
-import { AxiosError } from "axios";
-
 export interface IProductModel {
   category: string;
   title: string;
@@ -13,3 +11,8 @@ export interface IProductModel {
   };
 }
 
+export interface IProductStateModel {
+  products: IProductModel[],
+  loading: boolean,
+  error: string | null
+}

@@ -1,27 +1,26 @@
-import React, { memo, FC } from 'react';
+import { memo, FC } from 'react';
 import { SDescription, SImage, SList, SPrice, STitle, SUl, SWrap } from '../style/style';
 import { useProduct } from '../customHooks/Products.hook';
-import { PRODUCTS_URL } from '../constants/api.constants';
-
-
 
 const ProductCard: FC = () => {
-  const { products, loading, error } = useProduct(PRODUCTS_URL)
+  const { products, loading, error } = useProduct()
 
   if (loading) {
     return (
       <div>
-        Loading product card...
+        Загрузка списка товаров...
       </div>
     )
   }
+
   if (error) {
     return (
       <div>
-        Something went wrong! Error: {error.message}
+        Ошибка загрузки: {error}
       </div>
     )
   }
+
   return (
     <SUl>
       {products.map((product => {
