@@ -11,6 +11,10 @@ export interface IProductModel {
   };
 }
 
+export interface IPropsText {
+  text: string,
+}
+
 export interface IProductStateModel {
   products: IProductModel[],
   loading: boolean,

@@ -1,6 +1,7 @@
 import { memo, FC } from 'react';
-import { SDescription, SImage, SList, SPrice, STitle, SUl, SWrap } from '../style/style';
+import { SImage, SList, SPrice, STitle, SUl, SWrap } from '../style/style';
 import { useProduct } from '../customHooks/Products.hook';
+import { Description } from './Description';
 
 const ProductCard: FC = () => {
   const { products, loading, error } = useProduct()
@@ -31,9 +32,7 @@ const ProductCard: FC = () => {
             </STitle>
             <SWrap>
               <SImage src={product.image} alt={product.title} />
-              <SDescription>
-                {product.description}
-              </SDescription>
+              <Description text={product.description}/>
               <SPrice>
                 {product.price}$
               </SPrice>

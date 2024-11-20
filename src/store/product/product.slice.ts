@@ -20,7 +20,6 @@ export const productSlice = createSlice({
     },
     axiosProductSuccess(state, action: PayloadAction<IProductModel[]>) {
       state.loading = false;
-      console.log(action);
       state.products = action.payload;
     },
     axiosProductFailure(state, action: PayloadAction<string>) {

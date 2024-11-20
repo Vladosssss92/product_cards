@@ -48,3 +48,10 @@ export const SDescription = styled.p`
   min-width: 200px;
 
 `
+export const SButton = styled.button`
+display: block;
+margin-top: 10px;
+padding: 8px;
+border-radius: 10px;
+cursor: pointer;
+`
