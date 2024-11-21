@@ -26,8 +26,11 @@ export const productSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    addNewCustomProduct(state, action: PayloadAction<IProductModel>) {
+      state.products.push(action.payload);
+    },
   },
 });
 
-export const { axiosProductLoading, axiosProductSuccess, axiosProductFailure } =
+export const { axiosProductLoading, axiosProductSuccess, axiosProductFailure, addNewCustomProduct } =
   productSlice.actions;

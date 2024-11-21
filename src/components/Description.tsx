@@ -3,7 +3,6 @@ import { MAX_LENGTH } from "../constants/constants";
 import { SButton, SDescription } from "../style/style";
 import { IPropsText } from "./product/product.model";
 
-
 export const Description: FC<IPropsText> = ({ text }) => {
   const [toogleDescription, setToogleDescription] = useState(true)
 
@@ -18,7 +17,7 @@ export const Description: FC<IPropsText> = ({ text }) => {
       </SDescription>
     )
   }
-
+  
   return (
     <>
       <SDescription>

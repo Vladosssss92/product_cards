@@ -32,7 +32,8 @@ const ProductCard: FC = () => {
             </STitle>
             <SWrap>
               <SImage src={product.image} alt={product.title} />
-              <Description text={product.description}/>
+              <Description text={product.description} />
+
               <SPrice>
                 {product.price}$
               </SPrice>
