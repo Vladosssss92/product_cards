@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/product_cards/static/js/main.d430b19a.js",
+    "main.js": "/product_cards/static/js/main.c59c8495.js",
     "static/media/no-photos-svgrepo-com.svg": "/product_cards/static/media/no-photos-svgrepo-com.3f7d7be2bfbad65de1cf0415fc013bae.svg",
     "static/media/basket-alt-3-svgrepo-com.svg": "/product_cards/static/media/basket-alt-3-svgrepo-com.bc8e485916850eef950c0ae7320a7cb3.svg",
     "static/media/add-square-svgrepo-com.svg": "/product_cards/static/media/add-square-svgrepo-com.212375a833c7c5022c5f7077d0b90fad.svg",
     "static/media/close-square-svgrepo-com.svg": "/product_cards/static/media/close-square-svgrepo-com.b84e4a41b2beaab432a61d9e7806dd25.svg",
     "index.html": "/product_cards/index.html",
-    "main.d430b19a.js.map": "/product_cards/static/js/main.d430b19a.js.map"
+    "main.c59c8495.js.map": "/product_cards/static/js/main.c59c8495.js.map"
   },
   "entrypoints": [
-    "static/js/main.d430b19a.js"
+    "static/js/main.c59c8495.js"
   ]
 }
