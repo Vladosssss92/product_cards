@@ -1,7 +1,8 @@
 import styled, { createGlobalStyle } from "styled-components";
 import {
+  IButtonAddProductVisibilityProps,
+  IButtonBasketVisibilityProps,
   IButtonSaveNewProducr,
-  IButtonVisibilityProps,
   IRequriedInput,
 } from "../components/product/product.model";
 import { ReactComponent as CloseButton } from "../style/icons/close-square-svgrepo-com.svg";
@@ -12,16 +13,20 @@ export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
+    /* outline: 1px solid black; */
   }
   ul, li {
     list-style: none;
   }
-
+  body {
+    background-color: gray;
+  }
 `;
-export const SWrap = styled.div`
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
+
+export const SContainer = styled.div`
+  margin: 0 auto;
+  width: 800px;
+  min-width: 200px;
 `;
 
 export const STitle = styled.h3`
@@ -29,45 +34,62 @@ export const STitle = styled.h3`
   margin-top: 5px;
   margin-bottom: 15px;
 `;
+
 export const SUl = styled.ul`
-  margin: 45px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-top: 15px;
+  margin-bottom: 15px;
 `;
+
 export const SList = styled.li`
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   border: 2px solid lightgray;
   border-radius: 10px;
-  padding: 5px;
-  max-width: 900px;
-  min-width: 400px;
-  margin: 10px auto;
+  padding: 15px;
+  max-width: 250px;
+  div {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    width: 100%;
+  }
+`;
+
+export const SWrapDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
 `;
 
 export const SImage = styled.img`
-  width: 25%;
-  height: 25%;
+  width: 50%;
+  height: auto;
+  align-self: center;
 `;
 
 export const SPrice = styled.p`
   font-size: 20px;
   font-weight: 600;
   color: #a90e12;
+  align-self: end;
 `;
 
-export const SDescription = styled.p`
-  min-width: 200px;
-`;
 export const SButton = styled.button<IButtonSaveNewProducr>`
   display: ${({ $modalButton }) => ($modalButton ? "inline-block" : "block")};
-  width: ${({ $modalButton }) => ($modalButton ? "230px" : "auto")};
-  margin-top: ${({ $modalButton }) => ($modalButton ? "40px" : "10px")};
-  border: 2px solid gray;
-  padding: 8px;
+  width: ${({ $modalButton }) => ($modalButton ? "230px" : "115px")};
+  margin-top: ${({ $modalButton }) => ($modalButton ? "40px" : "0")};
+  padding: 4px;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   &:hover {
-    border: 2px solid green;
-    box-shadow: 0 0 5px green;
+    box-shadow: 0 0 5px gray;
   }
 `;
 
@@ -94,6 +116,10 @@ export const SModal = styled.div<IRequriedInput>`
   border-radius: 15px;
   background-color: #9aafcf;
   z-index: 100;
+  transition: 1s;
+  h2{
+    margin-bottom: 15px;
+  }
   div {
     display: flex;
     align-items: center;
@@ -106,7 +132,7 @@ export const SModal = styled.div<IRequriedInput>`
     outline: none;
     border-radius: 7px;
     height: 30px;
-    width: 200px;
+    width: 250px;
     padding-left: 5px;
     border: 2px solid green;
     &:hover {
@@ -122,6 +148,9 @@ export const SModal = styled.div<IRequriedInput>`
         $requiredInput ? "0 0 10px red" : ""};
     }
   }
+  label {
+    cursor: pointer;
+  }
 `;
 
 export const SButtonCloseModal = styled(CloseButton)`
@@ -136,28 +165,64 @@ export const SButtonCloseModal = styled(CloseButton)`
   }
 `;
 
-export const SButtonAddProduct = styled(AddProduct)<IButtonVisibilityProps>`
+export const SButtonAddProduct = styled(
+  AddProduct
+)<IButtonAddProductVisibilityProps>`
   position: fixed;
-  bottom: 120px;
-  right: 25px;
-  width: 80px;
-  height: 80px;
-  display: ${({ $isVisible }) => ($isVisible ? "none" : "dispay-block")};
+  bottom: 60px;
+  right: 15px;
+  width: 38px;
+  height: 40px;
+  display: ${({ $isVisible, $isVisibilityLoadind }) =>
+    $isVisible || $isVisibilityLoadind ? "none" : "dispay-block"};
   cursor: pointer;
   &:hover {
     filter: drop-shadow(0 0 10px blue);
   }
 `;
 
-export const SButtonBusket = styled(Basket)`
+export const SButtonBusket = styled(Basket)<IButtonBasketVisibilityProps>`
   position: fixed;
   bottom: 10px;
   right: 10px;
-  width: 110px;
-  height: 110px;
+  width: 50px;
+  height: 50px;
+  display: ${({ $isVisibilityLoadind }) =>
+    $isVisibilityLoadind ? "none" : "dispay-block"};
   cursor: pointer;
-  opacity: 1;
+  /* opacity: 1; */
+  z-index: 1;
   &:hover {
     filter: drop-shadow(0 0 10px blue);
   }
+`;
+
+export const SButtonBuy = styled.button`
+  width: 100%;
+  border-radius: 20px;
+  font-size: 20px;
+  height: 40px;
+  cursor: pointer;
+  color: white;
+  background-color: blue;
+  &:hover {
+    box-shadow: 0 0 10px darkblue;
+  }
+`;
+
+export const SCountProductInBasket = styled.span<IButtonBasketVisibilityProps>`
+  position: fixed;
+  right: 10px;
+  bottom: 40px;
+  font-size: 11px;
+  color: white;
+  font-weight: 600;
+  width: 18px;
+  height: 18px;
+  background-color: #1c274c;
+  border: 3px solid #1c274c;
+  border-radius: 50%;
+  display: ${({ $isVisibilityLoadind }) => $isVisibilityLoadind ? "none" : "flex"};
+  justify-content: center;
+  align-items: center;
 `;

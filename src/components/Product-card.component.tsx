@@ -1,5 +1,5 @@
 import { memo, FC } from 'react';
-import { SImage, SList, SPrice, STitle, SUl, SWrap } from '../style/style';
+import { SButtonBuy, SContainer, SImage, SList, SPrice, STitle, SUl } from '../style/style';
 import { useProduct } from '../customHooks/Products.hook';
 import { Description } from './Description';
 
@@ -23,25 +23,28 @@ const ProductCard: FC = () => {
   }
 
   return (
-    <SUl>
-      {products.map((product => {
-        return (
-          <SList key={product.id}>
-            <STitle>
-              {product.title}
-            </STitle>
-            <SWrap>
+    <SContainer>
+      <SUl>
+        {products.map((product => {
+          return (
+            <SList key={product.id}>
               <SImage src={product.image} alt={product.title} />
-              <Description text={product.description} />
-
-              <SPrice>
-                {product.price}$
-              </SPrice>
-            </SWrap>
-          </SList>
-        )
-      }))}
-    </SUl>
+              <STitle>
+                {product.title}
+              </STitle>
+              <div>
+                <p>Рейтинг {product.rating.rate}</p>
+                <SPrice>
+                  {product.price}$
+                </SPrice>
+              </div>
+              <Description text={product.description} product={product} />
+              <SButtonBuy>Купить</SButtonBuy>
+            </SList>
+          )
+        }))}
+      </SUl>
+    </SContainer>
   )
 };
 export default memo(ProductCard);

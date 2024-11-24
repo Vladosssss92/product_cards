@@ -1,9 +1,10 @@
 import { FC, useState } from "react";
 import { MAX_LENGTH } from "../constants/constants";
-import { SButton, SDescription } from "../style/style";
-import { IPropsText } from "./product/product.model";
+import { SButton, SWrapDescription } from "../style/style";
+import { IPropsTextAndCustom } from "./product/product.model";
+import { EditProduct } from "./EditProduct";
 
-export const Description: FC<IPropsText> = ({ text }) => {
+export const Description: FC<IPropsTextAndCustom> = ({ text, product }) => {
   const [toogleDescription, setToogleDescription] = useState(true)
 
   const handlerToogleDescription = () => {
@@ -12,20 +13,28 @@ export const Description: FC<IPropsText> = ({ text }) => {
 
   if (text.length < MAX_LENGTH) {
     return (
-      <SDescription>
-        {text}
-      </SDescription>
+      <SWrapDescription>
+        <p>
+          {text}
+        </p>
+        <div>
+          <EditProduct product={product} />
+        </div>
+      </SWrapDescription>
     )
   }
-  
+
   return (
-    <>
-      <SDescription>
+    <SWrapDescription>
+      <p>
         {toogleDescription ? text.slice(0, MAX_LENGTH) + '...' : text}
+      </p>
+      <div>
         <SButton onClick={handlerToogleDescription}>
-          {toogleDescription ? 'Показать описание' : "Скрыть описание"}
+          {toogleDescription ? 'Развернуть' : "Свернуть"}
         </SButton>
-      </SDescription>
-    </>
+        <EditProduct product={product} />
+      </div>
+    </SWrapDescription>
   )
 }

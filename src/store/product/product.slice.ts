@@ -29,8 +29,11 @@ export const productSlice = createSlice({
     addNewCustomProduct(state, action: PayloadAction<IProductModel>) {
       state.products.push(action.payload);
     },
+    editCustomProduct(state, action: PayloadAction<IProductModel>) {
+      state.products = state.products.map(product => product.id === action.payload.id ? action.payload : product)
+    }
   },
 });
 
-export const { axiosProductLoading, axiosProductSuccess, axiosProductFailure, addNewCustomProduct } =
+export const { axiosProductLoading, axiosProductSuccess, axiosProductFailure, addNewCustomProduct, editCustomProduct } =
   productSlice.actions;

@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ProductCard from './components/Product-card.component';
-import { GlobalStyle, SButtonAddProduct, SButtonBusket } from './style/style';
-import { Modal } from './components/Modal';
+import { GlobalStyle } from './style/style';
+import { ModalAddProduct } from './components/ModalAddProduct';
 
+import { ButtonsAddProductAndButton } from './components/ButtonsAddProductAndButton';
+import { ModalBasket } from './components/ModalBasket';
 
 function App() {
-  const [isOpenModal, setOpenModal] = useState(false)
+  const [isOpenModalAddProduct, setOpenModalAddProduct] = useState(false)
+  const [isOpenModalBasket, setOpenModalBasket] = useState(false)
   return (
     <>
       <ProductCard />
-      <SButtonBusket />
-      <SButtonAddProduct onClick={() => setOpenModal(true)} $isVisible={isOpenModal} />
-      <Modal isOpen={isOpenModal} onClose={setOpenModal} />
+      <ModalAddProduct isOpen={isOpenModalAddProduct} onClose={setOpenModalAddProduct} />
+      <ModalBasket isOpen={isOpenModalBasket} onClose={setOpenModalBasket}/>
+      <ButtonsAddProductAndButton isOpenAddProduct={setOpenModalAddProduct} isOpenBasket={setOpenModalBasket} isVisibility={isOpenModalAddProduct} />
       <GlobalStyle />
     </>
   );
