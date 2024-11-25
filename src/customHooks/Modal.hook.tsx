@@ -19,6 +19,7 @@ export const useModalAddProduct = ({ isOpen, onClose }) => {
     const handleClickOutModal = (event: MouseEvent) => {
       if (!modalRef.current.contains(event.target as Node)) {
         onClose(false);
+        setRequired(false)
       }
     }
     if (isOpen) {

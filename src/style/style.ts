@@ -74,16 +74,14 @@ export const SWrapCounter = styled.div`
     align-self: center;
     font-size: 25px;
     font-weight: 800;
-    color: #000080
-
+    color: #000080;
   }
-`
+`;
 
 export const SWrapDescription = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  
 `;
 
 export const SImage = styled.img`
@@ -151,6 +149,26 @@ export const SModal = styled.div<IRequriedInput>`
     gap: 20px;
     margin: auto 0;
   }
+  label {
+    &::before {
+      content: "Добавьте изображение товара";
+      padding-top: 5px;
+      display: inline-block;
+      background-color: white;
+      color: black;
+      border-radius: 5px;
+      cursor: pointer;
+      border-radius: 7px;
+      border: 2px solid blue;
+      height: 25px;
+      width: 255px;
+      transition: background-color 0.3s ease;
+    }
+    &:hover {
+      border-radius: 7px;
+      box-shadow: 0 0 10px darkcyan;
+    }
+  }
   input {
     outline: none;
     border-radius: 7px;
@@ -169,6 +187,10 @@ export const SModal = styled.div<IRequriedInput>`
         $requiredInput ? "2px solid red" : ""};
       box-shadow: ${({ $requiredInput }) =>
         $requiredInput ? "0 0 10px red" : ""};
+    }
+    &[type="file"] {
+      border: none;
+      display: none;
     }
   }
   label {
