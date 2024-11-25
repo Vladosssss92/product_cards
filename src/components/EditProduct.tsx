@@ -3,7 +3,6 @@ import { IPropsEditProduct } from "./product/product.model"
 import { SButton } from "../style/style"
 import { ModalEditProduct } from "./ModalEditProduct"
 
-
 export const EditProduct: FC<IPropsEditProduct> = ({product}) => {
   const [isOpenModalEditProduct, setOpenModalEditProduct] = useState(false)
   

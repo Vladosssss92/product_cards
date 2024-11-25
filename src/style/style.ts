@@ -25,8 +25,14 @@ export const GlobalStyle = createGlobalStyle`
 
 export const SContainer = styled.div`
   margin: 0 auto;
-  width: 800px;
+  width: 80%;
   min-width: 200px;
+  h1 {
+    text-align: center;
+    color: #000080;
+    margin: 20px;
+    font-size: 50px;
+  }
 `;
 
 export const STitle = styled.h3`
@@ -53,6 +59,7 @@ export const SList = styled.li`
   border-radius: 10px;
   padding: 15px;
   max-width: 250px;
+  justify-content: space-between;
   div {
     display: flex;
     gap: 20px;
@@ -61,10 +68,22 @@ export const SList = styled.li`
   }
 `;
 
+export const SWrapCounter = styled.div`
+  display: flex;
+  span {
+    align-self: center;
+    font-size: 25px;
+    font-weight: 800;
+    color: #000080
+
+  }
+`
+
 export const SWrapDescription = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: auto;
+  justify-content: space-around;
+  
 `;
 
 export const SImage = styled.img`
@@ -113,8 +132,9 @@ export const SModal = styled.div<IRequriedInput>`
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 800px;
-  min-width: 400px;
+  width: 70%;
+  max-width: 400px;
+  min-width: 200px;
   height: auto;
   border-radius: 15px;
   background-color: #9aafcf;
@@ -172,8 +192,8 @@ export const SButtonAddProduct = styled(
   AddProduct
 )<IButtonAddProductVisibilityProps>`
   position: fixed;
-  bottom: 80px;
-  right: 22px;
+  bottom: 85px;
+  right: 12px;
   width: 55px;
   height: 55px;
   display: ${({ $isVisible, $isVisibilityLoadind }) =>
@@ -187,7 +207,7 @@ export const SButtonAddProduct = styled(
 export const SButtonBusket = styled(Basket)<IButtonBasketVisibilityProps>`
   position: fixed;
   bottom: 10px;
-  right: 10px;
+  right: 0;
   width: 80px;
   height: 80px;
   display: ${({ $isVisibilityLoadind }) =>
@@ -214,8 +234,8 @@ export const SButtonBuy = styled.button`
 
 export const SCountProductInBasket = styled.span<IButtonBasketVisibilityProps>`
   position: fixed;
-  right: 10px;
-  bottom: 58px;
+  right: 2px;
+  bottom: 60px;
   font-size: 15px;
   color: white;
   font-weight: 600;

@@ -1,19 +1,20 @@
 import { memo, FC } from 'react';
-import { SButtonBuy, SContainer, SImage, SList, SPrice, STitle, SUl } from '../style/style';
+import { SButtonBuy, SContainer, SImage, SList, SPrice, STitle, SUl, SWrapDescription } from '../style/style';
 import { useProduct } from '../customHooks/Products.hook';
 import { Description } from './Description';
 import { addProductToBasket } from '../store/product/basket.slice';
 import { IProductModel } from './product/product.model';
-import { v4 as uuidv4 } from 'uuid';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
 
 const ProductCard: FC = () => {
   const { products, loading, error, dispatch } = useProduct()
-  let sort = 1;
+  const { sort } = useSelector((state: RootState) => state.baskedProducts)
+
   const handlerAddProductToBasked = (product: IProductModel) => {
     const newIdProduct = {
       ...product,
-      idFromBasket: uuidv4(),
-      sort: sort + 1
+      sort: sort,
     }
     dispatch(addProductToBasket(newIdProduct))
   }
@@ -40,17 +41,19 @@ const ProductCard: FC = () => {
         {products.map((product => {
           return (
             <SList key={product.id}>
-              <SImage src={product.image} alt={product.title} />
-              <STitle>
-                {product.title}
-              </STitle>
-              <div>
-                <p>Рейтинг {product.rating.rate}</p>
-                <SPrice>
-                  {product.price}$
-                </SPrice>
-              </div>
-              <Description product={product} />
+              <SWrapDescription>
+                <SImage src={product.image} alt={product.title} />
+                <STitle>
+                  {product.title}
+                </STitle>
+                <div>
+                  <p>Рейтинг {product.rating.rate}</p>
+                  <SPrice>
+                    {product.price}$
+                  </SPrice>
+                </div>
+                <Description product={product} />
+              </SWrapDescription>
               <SButtonBuy onClick={() => handlerAddProductToBasked(product)}>Купить</SButtonBuy>
             </SList>
           )

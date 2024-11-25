@@ -6,6 +6,7 @@ import {
 
 export const initialState: IProductInBasketStateModel = {
   productInBasket: [],
+  sort: 1,
 };
 export const basketSlice = createSlice({
   name: "basket",
@@ -13,6 +14,7 @@ export const basketSlice = createSlice({
   reducers: {
     addProductToBasket(state, action: PayloadAction<IProductModel>) {
       state.productInBasket.push(action.payload);
+      state.sort = ++state.sort
     },
     removeProductFromBasket(state, action: PayloadAction<IProductModel>) {
       const indexDeleteProduct = state.productInBasket.findIndex(

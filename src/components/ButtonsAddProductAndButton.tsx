@@ -13,13 +13,14 @@ export const ButtonsAddProductAndButton: FC<IPropsButtonsAddProductAndButton> = 
   if (!loading && !error) {
     buttonVisibility = false;
   }
+
   return (
     <>
       <Link to='/basket'>
         <SButtonBusket $isVisibilityLoadind={buttonVisibility} />
         {productInBasket.length > 0 ? <SCountProductInBasket $isVisibilityLoadind={buttonVisibility}>{productInBasket.length}</SCountProductInBasket> : null}
       </Link>
-        <SButtonAddProduct onClick={() => isOpenAddProduct(true)} $isVisible={isVisibility} $isVisibilityLoadind={buttonVisibility} />
+      <SButtonAddProduct onClick={() => isOpenAddProduct(true)} $isVisible={isVisibility} $isVisibilityLoadind={buttonVisibility} />
     </>
   )
 }
