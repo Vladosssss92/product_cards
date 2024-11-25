@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import {
   IButtonAddProductVisibilityProps,
   IButtonBasketVisibilityProps,
-  IButtonSaveNewProducr,
+  IButtonProps,
   IRequriedInput,
 } from "../components/product/product.model";
 import { ReactComponent as CloseButton } from "../style/icons/close-square-svgrepo-com.svg";
@@ -80,12 +80,15 @@ export const SPrice = styled.p`
   align-self: end;
 `;
 
-export const SButton = styled.button<IButtonSaveNewProducr>`
+export const SButton = styled.button<IButtonProps>`
   display: ${({ $modalButton }) => ($modalButton ? "inline-block" : "block")};
-  width: ${({ $modalButton }) => ($modalButton ? "230px" : "115px")};
+  width: ${({ $modalButton, $counter }) =>
+    $counter ? "30px" : $modalButton ? "230px" : "115px"};
+  height: ${({ $counter }) => ($counter ? "30px" : "")};
   margin-top: ${({ $modalButton }) => ($modalButton ? "40px" : "0")};
   padding: 4px;
-  border-radius: 10px;
+  border-radius: ${({ $counter }) => ($counter ? "20px" : "10px")};
+  background-color: ${({ $counter }) => ($counter ? "lightgreen" : "")};
   font-size: 14px;
   cursor: pointer;
   &:hover {
@@ -117,7 +120,7 @@ export const SModal = styled.div<IRequriedInput>`
   background-color: #9aafcf;
   z-index: 100;
   transition: 1s;
-  h2{
+  h2 {
     margin-bottom: 15px;
   }
   div {
@@ -169,10 +172,10 @@ export const SButtonAddProduct = styled(
   AddProduct
 )<IButtonAddProductVisibilityProps>`
   position: fixed;
-  bottom: 60px;
-  right: 15px;
-  width: 38px;
-  height: 40px;
+  bottom: 80px;
+  right: 22px;
+  width: 55px;
+  height: 55px;
   display: ${({ $isVisible, $isVisibilityLoadind }) =>
     $isVisible || $isVisibilityLoadind ? "none" : "dispay-block"};
   cursor: pointer;
@@ -185,12 +188,11 @@ export const SButtonBusket = styled(Basket)<IButtonBasketVisibilityProps>`
   position: fixed;
   bottom: 10px;
   right: 10px;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   display: ${({ $isVisibilityLoadind }) =>
     $isVisibilityLoadind ? "none" : "dispay-block"};
   cursor: pointer;
-  /* opacity: 1; */
   z-index: 1;
   &:hover {
     filter: drop-shadow(0 0 10px blue);
@@ -213,16 +215,17 @@ export const SButtonBuy = styled.button`
 export const SCountProductInBasket = styled.span<IButtonBasketVisibilityProps>`
   position: fixed;
   right: 10px;
-  bottom: 40px;
-  font-size: 11px;
+  bottom: 58px;
+  font-size: 15px;
   color: white;
   font-weight: 600;
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   background-color: #1c274c;
   border: 3px solid #1c274c;
   border-radius: 50%;
-  display: ${({ $isVisibilityLoadind }) => $isVisibilityLoadind ? "none" : "flex"};
+  display: ${({ $isVisibilityLoadind }) =>
+    $isVisibilityLoadind ? "none" : "flex"};
   justify-content: center;
   align-items: center;
 `;

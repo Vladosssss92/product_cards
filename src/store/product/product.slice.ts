@@ -20,7 +20,7 @@ export const productSlice = createSlice({
     },
     axiosProductSuccess(state, action: PayloadAction<IProductModel[]>) {
       state.loading = false;
-      state.products = action.payload;
+      if (state.products.length === 0) state.products = action.payload;
     },
     axiosProductFailure(state, action: PayloadAction<string>) {
       state.loading = false;
@@ -30,10 +30,17 @@ export const productSlice = createSlice({
       state.products.push(action.payload);
     },
     editCustomProduct(state, action: PayloadAction<IProductModel>) {
-      state.products = state.products.map(product => product.id === action.payload.id ? action.payload : product)
-    }
+      state.products = state.products.map((product) =>
+        product.id === action.payload.id ? action.payload : product
+      );
+    },
   },
 });
 
-export const { axiosProductLoading, axiosProductSuccess, axiosProductFailure, addNewCustomProduct, editCustomProduct } =
-  productSlice.actions;
+export const {
+  axiosProductLoading,
+  axiosProductSuccess,
+  axiosProductFailure,
+  addNewCustomProduct,
+  editCustomProduct,
+} = productSlice.actions;

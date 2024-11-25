@@ -3,8 +3,9 @@ import { SButtonAddProduct, SButtonBusket, SCountProductInBasket } from "../styl
 import { RootState } from "../store/store";
 import { FC } from "react";
 import { IPropsButtonsAddProductAndButton } from "./product/product.model";
+import { Link } from "react-router-dom";
 
-export const ButtonsAddProductAndButton: FC<IPropsButtonsAddProductAndButton> = ({ isOpenAddProduct, isOpenBasket, isVisibility }) => {
+export const ButtonsAddProductAndButton: FC<IPropsButtonsAddProductAndButton> = ({ isOpenAddProduct, isVisibility }) => {
   const { loading, error } = useSelector((state: RootState) => state.productList);
   const { productInBasket } = useSelector((state: RootState) => state.baskedProducts);
 
@@ -14,9 +15,11 @@ export const ButtonsAddProductAndButton: FC<IPropsButtonsAddProductAndButton> = 
   }
   return (
     <>
-      <SButtonBusket $isVisibilityLoadind={buttonVisibility} onClick={()=> isOpenBasket(true)}/>
-      {productInBasket.length > 0 ? <SCountProductInBasket $isVisibilityLoadind={buttonVisibility}>{productInBasket.length}</SCountProductInBasket> : null}
-      <SButtonAddProduct onClick={() => isOpenAddProduct(true)} $isVisible={isVisibility} $isVisibilityLoadind={buttonVisibility} />
+      <Link to='/basket'>
+        <SButtonBusket $isVisibilityLoadind={buttonVisibility} />
+        {productInBasket.length > 0 ? <SCountProductInBasket $isVisibilityLoadind={buttonVisibility}>{productInBasket.length}</SCountProductInBasket> : null}
+      </Link>
+        <SButtonAddProduct onClick={() => isOpenAddProduct(true)} $isVisible={isVisibility} $isVisibilityLoadind={buttonVisibility} />
     </>
   )
 }

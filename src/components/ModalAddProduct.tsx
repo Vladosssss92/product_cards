@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { createPortal } from "react-dom";
-import { SButton, SModal, SButtonCloseModal, SOverlay } from "../style/style";
+import { SButton, SModal, SOverlay } from "../style/style";
 import { IPropsModal } from "./product/product.model";
 import { useModalAddProduct } from "../customHooks/Modal.hook";
 
@@ -8,7 +8,6 @@ export const ModalAddProduct: FC<IPropsModal> = ({ isOpen, onClose }) => {
   const {
     modalRef,
     requiredInput,
-    handleCloseModal,
     productName,
     inputProductName,
     inputProductDescription,
@@ -24,7 +23,6 @@ export const ModalAddProduct: FC<IPropsModal> = ({ isOpen, onClose }) => {
     <>
       <SOverlay />
       <SModal ref={modalRef} $requiredInput={requiredInput}>
-        <SButtonCloseModal onClick={handleCloseModal} />
         <h2>Добавьте новый продукт</h2>
         <div>
           <input type="text" value={productName} onChange={inputProductName} placeholder="Введите название продукта" required />

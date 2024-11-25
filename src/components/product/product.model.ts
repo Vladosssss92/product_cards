@@ -8,6 +8,9 @@ export interface IProductModel {
   image: string;
   price: number;
   custom?: boolean;
+  idFromBasket?: string;
+  quantity?: number;
+  sort?: number;
   rating: {
     count: number;
     rate: number;
@@ -15,8 +18,9 @@ export interface IProductModel {
 }
 
 export interface IPropsTextAndCustom {
-  text: string;
   product: IProductModel;
+  idProductToBasket?: string;
+  count?: number
 }
 
 export interface IProductStateModel {
@@ -26,7 +30,7 @@ export interface IProductStateModel {
 }
 
 export interface IProductInBasketStateModel {
-  productInBasket: IProductModel[]
+  productInBasket: IProductModel[];
 }
 
 export interface IPropsModal {
@@ -37,8 +41,7 @@ export interface IPropsModal {
 
 export interface IPropsButtonsAddProductAndButton {
   isOpenAddProduct: Dispatch<SetStateAction<boolean>>;
-  isOpenBasket: Dispatch<SetStateAction<boolean>>;
-  isVisibility: boolean,
+  isVisibility: boolean;
 }
 
 export interface IPropsEditProduct {
@@ -54,11 +57,12 @@ export interface IButtonBasketVisibilityProps {
   $isVisibilityLoadind: boolean;
 }
 
-
-export interface IButtonSaveNewProducr {
+export interface IButtonProps {
   $modalButton?: boolean;
+  $counter?: string
 }
 
 export interface IRequriedInput {
   $requiredInput?: boolean;
 }
+

@@ -9,10 +9,12 @@ export const useProduct = () => {
   const dispatch: AppDispatch = useDispatch()
 
   useEffect(() => {
+    // if (!products && !loading) 
     dispatch(axiosProducts(PRODUCTS_URL))
+
   }, [dispatch])
 
   return {
-    products, loading, error
+    products, loading, error, dispatch
   }
 }

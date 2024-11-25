@@ -5,21 +5,7 @@ import {
 } from "../../components/product/product.model";
 
 export const initialState: IProductInBasketStateModel = {
-  productInBasket: [
-    {
-      id: 18,
-      title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
-      price: 9.85,
-      description:
-        "95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem",
-      category: "women's clothing",
-      image: "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
-      rating: {
-        rate: 4.7,
-        count: 130,
-      },
-    },
-  ],
+  productInBasket: [],
 };
 export const basketSlice = createSlice({
   name: "basket",
@@ -30,14 +16,19 @@ export const basketSlice = createSlice({
     },
     removeProductFromBasket(state, action: PayloadAction<IProductModel>) {
       const indexDeleteProduct = state.productInBasket.findIndex(
-        (element) => element === action.payload
+        (element) => element.id === action.payload.id
       );
       state.productInBasket = state.productInBasket.filter(
         (_, index) => index !== indexDeleteProduct
       );
     },
+    removeAllProductFromBasket(state, action: PayloadAction<IProductModel>) {
+      state.productInBasket = state.productInBasket.filter(
+        (product) => product.id !== action.payload.id  
+      );
+    },
   },
 });
 
-export const { addProductToBasket, removeProductFromBasket } =
+export const { addProductToBasket, removeProductFromBasket, removeAllProductFromBasket } =
   basketSlice.actions;
