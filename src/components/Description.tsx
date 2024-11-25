@@ -4,11 +4,8 @@ import { SButton, SWrapDescription } from "../style/style";
 import { IPropsTextAndCustom } from "./product/product.model";
 import { EditProduct } from "./EditProduct";
 
-
-export const Description: FC<IPropsTextAndCustom> = ({ product, idProductToBasket, count }) => {
+export const Description: FC<IPropsTextAndCustom> = ({ product }) => {
   const [toogleDescription, setToogleDescription] = useState(true)
-
-  
 
   const handlerToogleDescription = () => {
     setToogleDescription(!toogleDescription)

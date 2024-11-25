@@ -13,7 +13,6 @@ export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
-    /* outline: 1px solid black; */
   }
   ul, li {
     list-style: none;
@@ -39,6 +38,10 @@ export const STitle = styled.h3`
   text-align: center;
   margin-top: 5px;
   margin-bottom: 15px;
+  span {
+    font-size: 25px;
+    cursor: pointer;
+  }
 `;
 
 export const SUl = styled.ul`
@@ -58,18 +61,23 @@ export const SList = styled.li`
   border: 2px solid lightgray;
   border-radius: 10px;
   padding: 15px;
-  max-width: 250px;
+  width: 250px;
   justify-content: space-between;
   div {
     display: flex;
     gap: 20px;
-    justify-content: space-between;
     width: 100%;
   }
 `;
 
+export const SWrapRaiting = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const SWrapCounter = styled.div`
   display: flex;
+  justify-content: space-between;
   span {
     align-self: center;
     font-size: 25px;
@@ -84,17 +92,26 @@ export const SWrapDescription = styled.div`
   justify-content: space-around;
 `;
 
-export const SImage = styled.img`
-  width: 50%;
-  height: auto;
-  align-self: center;
-`;
-
 export const SPrice = styled.p`
   font-size: 20px;
   font-weight: 600;
   color: #a90e12;
   align-self: end;
+`;
+
+export const SImageWrap = styled.div`
+  width: 50px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: white;
+`;
+export const SImage = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
 `;
 
 export const SButton = styled.button<IButtonProps>`

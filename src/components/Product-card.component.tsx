@@ -1,11 +1,12 @@
 import { memo, FC } from 'react';
-import { SButtonBuy, SContainer, SImage, SList, SPrice, STitle, SUl, SWrapDescription } from '../style/style';
+import { SButtonBuy, SContainer, SImage, SImageWrap, SList, SPrice, STitle, SUl, SWrapDescription, SWrapRaiting } from '../style/style';
 import { useProduct } from '../customHooks/Products.hook';
 import { Description } from './Description';
 import { addProductToBasket } from '../store/product/basket.slice';
 import { IProductModel } from './product/product.model';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
+import { Title } from './Title';
 
 const ProductCard: FC = () => {
   const { products, loading, error, dispatch } = useProduct()
@@ -42,16 +43,16 @@ const ProductCard: FC = () => {
           return (
             <SList key={product.id}>
               <SWrapDescription>
-                <SImage src={product.image} alt={product.title} />
-                <STitle>
-                  {product.title}
-                </STitle>
-                <div>
+                <SImageWrap>
+                  <SImage src={product.image} alt={product.title} />
+                </SImageWrap>
+                <Title product={product} />
+                <SWrapRaiting>
                   <p>Рейтинг {product.rating.rate}</p>
                   <SPrice>
                     {product.price}$
                   </SPrice>
-                </div>
+                </SWrapRaiting>
                 <Description product={product} />
               </SWrapDescription>
               <SButtonBuy onClick={() => handlerAddProductToBasked(product)}>Купить</SButtonBuy>

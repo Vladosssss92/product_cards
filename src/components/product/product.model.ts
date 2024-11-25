@@ -20,7 +20,7 @@ export interface IProductModel {
 export interface IPropsTextAndCustom {
   product: IProductModel;
   idProductToBasket?: number;
-  count?: number
+  count?: number;
 }
 
 export interface IProductStateModel {
@@ -31,7 +31,7 @@ export interface IProductStateModel {
 
 export interface IProductInBasketStateModel {
   productInBasket: IProductModel[];
-  sort: number
+  sort: number;
 }
 
 export interface IPropsModal {
@@ -60,10 +60,9 @@ export interface IButtonBasketVisibilityProps {
 
 export interface IButtonProps {
   $modalButton?: boolean;
-  $counter?: number
+  $counter?: number;
 }
 
 export interface IRequriedInput {
   $requiredInput?: boolean;
 }
-

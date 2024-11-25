@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { SContainer, SUl, SList, SImage, STitle, SPrice, SButtonCloseModal, SButtonBuy, SWrapDescription } from "../style/style"
+import { SContainer, SUl, SList, SImage, SPrice, SButtonCloseModal, SButtonBuy, SWrapDescription, SImageWrap, SWrapRaiting } from "../style/style"
 import { AppDispatch, RootState } from "../store/store";
 import { Link } from "react-router-dom";
 import { removeAllProductFromBasket } from "../store/product/basket.slice";
 import { IProductModel } from "./product/product.model";
 import { ButtonCountBuyProduct } from "./ButtonCountBuyProduct.component";
+import { Title } from "./Title";
 
 
 export const Basket = () => {
@@ -32,21 +33,19 @@ export const Basket = () => {
           return (
             <SList key={product.sort}>
               <SWrapDescription>
-                <SImage src={product.image} alt={product.title} />
-              </SWrapDescription>
-              <SWrapDescription>
-                <STitle>
-                  {product.title.length > 20 ? product.title.slice(0, 20) + '...' : product.title}
-                </STitle>
-                <div>
+                <SImageWrap>
+                  <SImage src={product.image} alt={product.title} />
+                </SImageWrap>
+                <Title product={product} />
+                <SWrapRaiting>
                   <p>Рейтинг {product.rating.rate}</p>
                   <SPrice>
                     {product.price}$
                   </SPrice>
-                </div>
-                <ButtonCountBuyProduct product={product} idProductToBasket={product.sort} count={product.quantity} />
-                <SButtonBuy onClick={() => dispatch(removeAllProductFromBasket(product))}>Удалить</SButtonBuy>
+                </SWrapRaiting>
               </SWrapDescription>
+              <ButtonCountBuyProduct product={product} idProductToBasket={product.sort} count={product.quantity} />
+              <SButtonBuy onClick={() => dispatch(removeAllProductFromBasket(product))}>Удалить</SButtonBuy>
             </SList>
           )
         }))}
