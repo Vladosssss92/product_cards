@@ -2,12 +2,14 @@ import styled, { createGlobalStyle } from "styled-components";
 import {
   IButtonAddProductVisibilityProps,
   IButtonBasketVisibilityProps,
+  IButtonDelete,
   IButtonProps,
   IRequriedInput,
 } from "../components/product/product.model";
 import { ReactComponent as CloseButton } from "../style/icons/close-square-svgrepo-com.svg";
 import { ReactComponent as AddProduct } from "../style/icons/add-square-svgrepo-com.svg";
 import { ReactComponent as Basket } from "../style/icons/basket-alt-3-svgrepo-com.svg";
+import { ReactComponent as Delete } from "../style/icons/delete-1-svgrepo-com.svg";
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -18,20 +20,36 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
   body {
-    background-color: gray;
+    background-color: lightgray;
   }
-`;
-
-export const SContainer = styled.div`
-  margin: 0 auto;
-  width: 80%;
-  min-width: 200px;
   h1 {
     text-align: center;
     color: #000080;
     margin: 20px;
     font-size: 50px;
   }
+  `;
+
+export const SContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 80%;
+  min-width: 200px;
+`;
+
+export const SSummProduct = styled.div`
+  position: sticky;
+  top: 10px;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 15px;
+  z-index: 2;
+  box-shadow: 0 0 15px black;
+  background-color: #c4cce3;
+  margin-bottom: 20px;
 `;
 
 export const STitle = styled.h3`
@@ -57,12 +75,14 @@ export const SList = styled.li`
   background-color: white;
   display: flex;
   flex-direction: column;
+  position: relative;
   gap: 10px;
   border: 2px solid lightgray;
   border-radius: 10px;
   padding: 15px;
   width: 250px;
   justify-content: space-between;
+  box-shadow: 0 0 10px black;
   div {
     display: flex;
     gap: 20px;
@@ -215,7 +235,7 @@ export const SModal = styled.div<IRequriedInput>`
   }
 `;
 
-export const SButtonCloseModal = styled(CloseButton)`
+export const SButtonClose = styled(CloseButton)<IButtonProps>`
   width: 40px;
   height: 40px;
   position: absolute;
@@ -287,4 +307,17 @@ export const SCountProductInBasket = styled.span<IButtonBasketVisibilityProps>`
     $isVisibilityLoadind ? "none" : "flex"};
   justify-content: center;
   align-items: center;
+`;
+
+export const SButtonDelete = styled(Delete)<IButtonDelete>`
+  display: ${({ $custom }) => ($custom ? "dispay-block" : "none")};
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+  &:hover {
+    filter: drop-shadow(0 0 8px red);
+  }
 `;

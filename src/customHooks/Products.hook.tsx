@@ -9,8 +9,8 @@ export const useProduct = () => {
   const dispatch: AppDispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(axiosProducts(PRODUCTS_URL))
-  }, [dispatch])
+    if (products.length === 0) dispatch(axiosProducts(PRODUCTS_URL))
+  }, [products, dispatch])
 
   return {
     products, loading, error, dispatch

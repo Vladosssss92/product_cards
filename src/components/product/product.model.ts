@@ -8,7 +8,7 @@ export interface IProductModel {
   image: string;
   price: number;
   custom?: boolean;
-  idFromBasket?: string;
+  // idFromBasket?: string;
   quantity?: number;
   sort?: number;
   rating: {
@@ -65,4 +65,8 @@ export interface IButtonProps {
 
 export interface IRequriedInput {
   $requiredInput?: boolean;
+}
+
+export interface IButtonDelete {
+  $custom: boolean,
 }

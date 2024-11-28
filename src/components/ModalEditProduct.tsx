@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { createPortal } from "react-dom";
-import { SButton, SModal, SButtonCloseModal, SOverlay } from "../style/style";
+import { SButton, SButtonClose, SModal, SOverlay } from "../style/style";
 import { IPropsModal } from "./product/product.model";
 import { useModalAddProduct } from "../customHooks/Modal.hook";
 
@@ -20,7 +20,7 @@ export const ModalEditProduct: FC<IPropsModal> = ({ isOpen, onClose, product }) 
     <>
       <SOverlay />
       <SModal ref={modalRef} $requiredInput={requiredInput}>
-        <SButtonCloseModal onClick={handleCloseModal} />
+        <SButtonClose onClick={handleCloseModal} />
         <h2>Отредактируйте карточку товара</h2>
         <div>
           <input type="text" defaultValue={product.title} onChange={inputProductName} placeholder="Измените название продукта" required />

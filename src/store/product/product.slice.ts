@@ -20,7 +20,7 @@ export const productSlice = createSlice({
     },
     axiosProductSuccess(state, action: PayloadAction<IProductModel[]>) {
       state.loading = false;
-      if (state.products.length === 0) state.products = action.payload;
+      state.products = action.payload;
     },
     axiosProductFailure(state, action: PayloadAction<string>) {
       state.loading = false;
@@ -31,9 +31,12 @@ export const productSlice = createSlice({
     },
     editCustomProduct(state, action: PayloadAction<IProductModel>) {
       state.products = state.products.map((product) =>
-        product.id === action.payload.id ? action.payload : product
+      product.id === action.payload.id ? action.payload : product
       );
     },
+    deleteCustomProduct(state, action: PayloadAction<IProductModel>) {
+      state.products = state.products.filter(deleteProduct => deleteProduct.id !== action.payload.id)
+    }
   },
 });
 
@@ -43,4 +46,5 @@ export const {
   axiosProductFailure,
   addNewCustomProduct,
   editCustomProduct,
+  deleteCustomProduct,
 } = productSlice.actions;
