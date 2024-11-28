@@ -46,6 +46,15 @@ export const useModalAddProduct = ({ isOpen, onClose }) => {
     }
   }
 
+  const clearingStates = () => {
+    onClose(false);
+    setProductName('');
+    setproductDiscription('');
+    setproductPrice('')
+    setRequired(false);
+    setSelectedFileUrl(null);
+  }
+
   const handlerAddNewProduct = () => {
     if (productName && productDiscription && productPrice) {
       const numberLastId = products[products.length - 1].id
@@ -63,11 +72,7 @@ export const useModalAddProduct = ({ isOpen, onClose }) => {
         },
       }
       dispatch(addNewCustomProduct(newProduct));
-      onClose(false);
-      setProductName('');
-      setproductDiscription('');
-      setproductPrice('')
-      setRequired(false);
+      clearingStates()
     } else {
       setRequired(true)
     }
@@ -89,29 +94,13 @@ export const useModalAddProduct = ({ isOpen, onClose }) => {
       },
     }
     dispatch(editCustomProduct(newProduct));
-    onClose(false);
-    setProductName('');
-    setproductDiscription('');
-    setproductPrice('')
-    setRequired(false);
-    setSelectedFileUrl(null);
-  }
-
-
-
-  const handleCloseModal = () => {
-    setProductName('');
-    setproductDiscription('');
-    setproductPrice('')
-    onClose(false);
-    setRequired(false);
-    setSelectedFileUrl(null);
+    clearingStates()
   }
 
   return {
     modalRef,
     requiredInput,
-    handleCloseModal,
+    clearingStates,
     productName,
     inputProductName,
     inputProductDescription,

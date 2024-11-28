@@ -9,7 +9,7 @@ import {
 import { ReactComponent as CloseButton } from "../style/icons/close-square-svgrepo-com.svg";
 import { ReactComponent as AddProduct } from "../style/icons/add-square-svgrepo-com.svg";
 import { ReactComponent as Basket } from "../style/icons/basket-alt-3-svgrepo-com.svg";
-import { ReactComponent as Delete } from "../style/icons/delete-1-svgrepo-com.svg";
+import { ReactComponent as Delete } from "../style/icons/delete-round-svgrepo-com.svg";
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -318,6 +318,6 @@ export const SButtonDelete = styled(Delete)<IButtonDelete>`
   top: 5px;
   cursor: pointer;
   &:hover {
-    filter: drop-shadow(0 0 8px red);
+    filter: drop-shadow(0 0 5px red);
   }
 `;

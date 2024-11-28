@@ -22,6 +22,5 @@ export const Title: FC<IPropsTextAndCustom> = ({ product }) => {
       {toogleDescription ? product.title.slice(0, 20) : product.title}
       <span onClick={handlerToogleDescription}>...</span>
     </STitle>
-
   )
 }

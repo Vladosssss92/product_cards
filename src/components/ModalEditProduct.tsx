@@ -11,7 +11,7 @@ export const ModalEditProduct: FC<IPropsModal> = ({ isOpen, onClose, product }) 
     inputProductDescription,
     inputProductPrice,
     handlerFileChange,
-    handleCloseModal,
+    clearingStates,
     requiredInput,
     handlerEditProduct } = useModalAddProduct({ isOpen, onClose });
 
@@ -20,7 +20,7 @@ export const ModalEditProduct: FC<IPropsModal> = ({ isOpen, onClose, product }) 
     <>
       <SOverlay />
       <SModal ref={modalRef} $requiredInput={requiredInput}>
-        <SButtonClose onClick={handleCloseModal} />
+        <SButtonClose onClick={clearingStates} />
         <h2>Отредактируйте карточку товара</h2>
         <div>
           <input type="text" defaultValue={product.title} onChange={inputProductName} placeholder="Измените название продукта" required />

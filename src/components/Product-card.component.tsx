@@ -1,5 +1,5 @@
 import { memo, FC } from 'react';
-import { SButtonBuy, SButtonClose, SButtonDelete, SContainer, SImage, SImageWrap, SList, SPrice, STitle, SUl, SWrapDescription, SWrapRaiting } from '../style/style';
+import { SButtonBuy, SButtonDelete, SContainer, SImage, SImageWrap, SList, SPrice, SUl, SWrapDescription, SWrapRaiting } from '../style/style';
 import { useProduct } from '../customHooks/Products.hook';
 import { Description } from './Description';
 import { addProductToBasket } from '../store/product/basket.slice';

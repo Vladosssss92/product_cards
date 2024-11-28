@@ -16,7 +16,7 @@ export const ModalAddProduct: FC<IPropsModal> = ({ isOpen, onClose }) => {
     productPrice,
     handlerFileChange,
     handlerAddNewProduct,
-    handleCloseModal
+    clearingStates
   } = useModalAddProduct({ isOpen, onClose })
 
   if (!isOpen) return null;
@@ -24,7 +24,7 @@ export const ModalAddProduct: FC<IPropsModal> = ({ isOpen, onClose }) => {
     <>
       <SOverlay />
       <SModal ref={modalRef} $requiredInput={requiredInput}>
-        <SButtonClose onClick={handleCloseModal} />
+        <SButtonClose onClick={clearingStates} />
         <h2>Добавьте новый продукт</h2>
         <div>
           <input type="text" value={productName} onChange={inputProductName} placeholder="Введите название продукта" required />
